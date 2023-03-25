@@ -1,0 +1,12 @@
+[package]
+name = "decenwser_data_store"
+version = "0.2.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+decenwser = { path = "./decenwser", features = ["no-entrypoint"] }
+anchor-client = { version = "0.26.0", features = ["debug"] }
+anyhow = "1.0.68"
+shellexpand = "3.0.0"
