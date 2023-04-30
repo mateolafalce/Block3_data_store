@@ -8,7 +8,7 @@
 
 <br>
 
-This program written to run on the Solana blockchain has the purpose of saving the respective HTML and JS data of each web page. The program is deactivated to date since this data architecture was no longer used in version 0.1.1.
+This program written to run on the Solana blockchain has the purpose of saving the respective HTML and JS data of each web page. The program is deactivated to date since this data architecture was no longer used in version 0.1.1. I'm now going show you the logic behind the program that stored information for Decenwser.
 
 <h3 align="center">Init Decenwser Account</h3>
 
