@@ -6,7 +6,7 @@
 
 </div>
 
----
+<br>
 
 This program written to run on the Solana blockchain has the purpose of saving the respective HTML and JS data of each web page. The program is deactivated to date since this data architecture was no longer used in version 0.1.1.
 
