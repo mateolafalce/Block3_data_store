@@ -18,11 +18,9 @@ pub struct App {
 
 pub fn check(domain: String) -> Result<()> {
     // program_id is set to the program ID of the application we're interacting with
-    let program_id: Pubkey =
-        Pubkey::from_str(&program_id::ID).unwrap();
+    let program_id: Pubkey = Pubkey::from_str(&program_id::ID).unwrap();
     // pda is set to the public key of the program derived address (PDA) for the domain
-    let (pda, _bump) =
-        Pubkey::find_program_address(&[&hash(domain.as_bytes()).to_bytes()], &program_id);
+    let (pda, _bump) = Pubkey::find_program_address(&[&hash(domain.as_bytes()).to_bytes()], &program_id);
     // A new client is created, connected to the Devnet cluster and using a new keypair
     let client: Client = Client::new(Cluster::Devnet, Rc::new(Keypair::new()));
     // The program is loaded from the client using the program ID
@@ -87,13 +85,9 @@ pub fn html_request(html_iter: usize, domain: String) -> Result<String> {
     // We use the client to get a handle to the program we want to interact with.
     let program: Program = client.program(program_id);
     // Next, we use the domain string to calculate a public key for the program-derived account (PDA)
-    let (pda, _bump) =
-        Pubkey::find_program_address(&[&hash(domain.as_bytes()).to_bytes()], &program_id);
+    let (pda, _bump) = Pubkey::find_program_address(&[&hash(domain.as_bytes()).to_bytes()], &program_id);
     let app_data: MainAccount = program.account(pda)?;
-    // With the PDA account data in hand, we can use the HTML iteration index to calculate a public key for
-    // the HTML account we want to read from.
-    let (html_pbk, _bump) =
-        Pubkey::find_program_address(&[&app_data.html[html_iter - 1].to_le_bytes()], &program_id);
+    let (html_pbk, _bump) = Pubkey::find_program_address(&[&app_data.html[html_iter - 1].to_le_bytes()], &program_id);
     let html: HTML = program.account(html_pbk)?;
     Ok(html.html)// Finally, we return the HTML data from the retrieved account.
 }
@@ -113,14 +107,11 @@ pub fn css_request(css_iter: usize, domain: String) -> Result<String> {
 }
 pub fn js_request(js_iter: usize, domain: String) -> Result<String> {
     // Define a variable called program_id and set it to the ID of a program
-    let program_id: Pubkey =
-        Pubkey::from_str(&program_id::ID).unwrap();
+    let program_id: Pubkey = Pubkey::from_str(&program_id::ID).unwrap();
     // Create a new client object that connects to the Devnet cluster
     let client: Client = Client::new(Cluster::Devnet, Rc::new(Keypair::new()));
     let program: Program = client.program(program_id); // Get the program associated with the program_id
-    // Calculate the public key of the PDA
-    let (pda, _bump) =
-        Pubkey::find_program_address(&[&hash(domain.as_bytes()).to_bytes()], &program_id);
+    let (pda, _bump) = Pubkey::find_program_address(&[&hash(domain.as_bytes()).to_bytes()], &program_id);
     // Get the data associated with the main account associated with the PDA
     let app_data: MainAccount = program.account(pda)?;
     // Calculate the public key of the JavaScript-derived account (JS) and its bump seed

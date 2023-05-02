@@ -14,7 +14,14 @@ pub fn main_account(
     program: &Program,
     web_name: String
 ) -> Result<()> {
-    let (main_account, _bump) = Pubkey::find_program_address(&[&anchor_lang::solana_program::hash::hash(web_name.as_bytes()).to_bytes()], &program.id());
+    // Find the program address using the provided web name and the program ID
+    let (main_account, _bump) = Pubkey::find_program_address(
+        // Hash the web_name string using the Solana SDK's hash function and convert to bytes
+        &[&anchor_lang::solana_program::hash::hash(web_name.as_bytes()).to_bytes()],
+        // Use the ID of the current program
+        &program.id()
+    );
+    // Create and send a transaction to create a MainAccount using the provided data
     let tx: Signature = program
         .request()
         .accounts(decenwser::accounts::MainAccountStruct {
@@ -26,7 +33,9 @@ pub fn main_account(
             web_name
         })
         .send()?;
+    // Retrieve the MainAccount data from the blockchain
     let account: MainAccount = program.account(main_account)?;
+    // Print out the transaction signature, PDA, and MainAccount data
     println!("------------------------------------------------------------");
     println!("Tx: {}", tx);
     println!("------------------------------------------------------------");
@@ -46,5 +55,5 @@ pub fn main_account(
     println!("------------------------------------------------------------");
     println!("Space: {}", account.len);
     println!("------------------------------------------------------------");
-    Ok(())
+    Ok(()) // Return Ok to indicate success
 }

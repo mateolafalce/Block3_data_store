@@ -17,16 +17,13 @@ pub fn decenwser1(
         Pubkey::find_program_address(&[b"Decenwser"], &program.id());
     let tx: Signature = program
         .request()
-        // Specify the accounts to be used in the transaction
         .accounts(decenwser::accounts::Decenwser {
             decenwser, // PDA address for the Decenwser program
             signer: program.payer(), // Account used to pay for the transaction
             system_program: system_program::ID, // System program account
         })
-        // Specify the instruction to be executed by the Decenwser program
         .args(decenwser::instruction::Decenwser {})
         .send()?; // Send the transaction and receive the resulting signature
-    // Get the Decenwser account associated with the PDA
     let account: DecenwserAccount = program.account(decenwser)?;
     // Print information about the transaction and the Decenwser account
     println!("------------------------------------------------------------");
