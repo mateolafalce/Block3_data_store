@@ -11,9 +11,6 @@ use anyhow::Result;
 use decenwser::state::DecenwserAccount;
 use decenwser::state::CSS;
 
-// This function stores CSS data in a program-derived address (PDA) account
-// and logs some information to the console. It returns a `Result` indicating
-// whether the operation was successful.
 pub fn css_store(
     program: &Program,
     css: String,
@@ -21,7 +18,7 @@ pub fn css_store(
 ) -> Result<()> {
     // Find the PDA for the main account associated with the given web name.
     let (main_account, _bump) = Pubkey::find_program_address(
-        &[&hash(web_name.as_bytes()).to_bytes()], 
+        &[&hash(web_name.as_bytes()).to_bytes()],
         &program.id()
     );
     // Find the PDA for the Decenwser program.

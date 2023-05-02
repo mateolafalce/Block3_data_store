@@ -8,34 +8,41 @@ use anchor_client::{
     Program,
 };
 use anyhow::Result;
-use decenwser::state::DecenwserAccount;
-use decenwser::state::JS;
+use decenwser::state::{
+    DecenwserAccount,
+    JS
+};
 
 pub fn js_store(
     program: &Program,
-    js: String,
+    js: String, 
     web_name: String
 ) -> Result<()> {
+    // Generate a program-derived address for the website's main account.
     let (main_account, _bump) = Pubkey::find_program_address(&[&hash(web_name.as_bytes()).to_bytes()], &program.id());
-    let (decenwser, _bump): (Pubkey, u8) =
-        Pubkey::find_program_address(&[b"Decenwser"], &program.id());
+    // Generate a program-derived address for the Decenwser program account.
+    let (decenwser, _bump): (Pubkey, u8) = Pubkey::find_program_address(&[b"Decenwser"], &program.id());
+    // Get the Decenwser account from the program's accounts.
     let account: DecenwserAccount = program.account(decenwser)?;
-    let (js_store, _bump): (Pubkey, u8) =
-        Pubkey::find_program_address(&[&account.total_updates.to_le_bytes()], &program.id());
+    // Generate a program-derived address for the JavaScript store account.
+    let (js_store, _bump): (Pubkey, u8) = Pubkey::find_program_address(&[&account.total_updates.to_le_bytes()], &program.id());
+    // Send a transaction to the Decenwser program to store the JavaScript code.
     let tx: Signature = program
         .request()
         .accounts(decenwser::accounts::JsStore {
             main_account,
             decenwser,
             js_store,
-            signer: program.payer(),
+            signer: program.payer(), // The payer of the transaction.
             system_program: system_program::ID,
         })
         .args(decenwser::instruction::JsStore {
-            js
+            js // The JavaScript code to be stored.
         })
         .send()?;
+    // Get the JavaScript store account from the program's accounts.
     let js_account: JS = program.account(js_store)?;
+    // Print information about the transaction and the stored JavaScript code.
     println!("------------------------------------------------------------");
     println!("Tx: {}", tx);
     println!("------------------------------------------------------------");
