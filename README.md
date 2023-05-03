@@ -18,22 +18,27 @@ This program is the predecessor of the current program that runs behind Decenwse
 pub fn decenwser(
     ctx: Context<Decenwser>
 ) -> Result<()> {
+    // Find the program address based on the program ID and a fixed string.
     let (_pda, bump) = Pubkey::find_program_address(&[b"Decenwser"], ctx.program_id);
     let decenwser: &mut Account<DecenwserAccount> = &mut ctx.accounts.decenwser;
+    // Set some fields of the DecenwserAccount.
     decenwser.pages_online = 0;
     decenwser.total_updates = 0;
     decenwser.bump_original = bump;
-    Ok(())
+    Ok(()) // Return success.
 }
 
 #[derive(Accounts)]
 pub struct Decenwser<'info> {
+    // The DecenwserAccount being initialized.
     #[account(init, seeds = [b"Decenwser"], bump, payer = signer, space = DecenwserAccount::SIZE + 8)]
     pub decenwser: Account<'info, DecenwserAccount>,
-    #[account(mut)]
+    #[account(mut)] // The signer of the transaction.
     pub signer: Signer<'info>,
+    // The system program, which provides basic program functionality.
     pub system_program: Program<'info, System>,
 }
+
 ```
 
 This function uses the derive macro to define a Decenwser structure that groups a series of accounts and programs necessary for the execution of the program. The Decenwser structure is defined by the #[derive(Accounts)] annotation, which means that the Accounts macro will automatically generate the code necessary to initialize and manipulate the accounts and programs associated with this structure.

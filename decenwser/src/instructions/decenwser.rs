@@ -4,7 +4,6 @@ use anchor_lang::{
 };
 use crate::state::accounts::*;
 
-// This function is the entry point for the Decenwser program.
 pub fn decenwser(
     ctx: Context<Decenwser>
 ) -> Result<()> {
