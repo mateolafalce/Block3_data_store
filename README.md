@@ -262,7 +262,7 @@ Verify that the account of the owner of the main account is the same as the acco
 
 Finally, returns a success value if all operations completed successfully.
 
-<h3 align="center">License</h3>
+<h3 align="center">License📜</h3>
 
 This project is licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. You may obtain a copy of the License at:
 
