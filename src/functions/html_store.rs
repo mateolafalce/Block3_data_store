@@ -16,12 +16,13 @@ pub fn html_store(
     html: String,
     web_name: String
 ) -> Result<()> {
+    // Find the program address for the main account using the web_name as input
     let (main_account, _bump) = Pubkey::find_program_address(&[&hash(web_name.as_bytes()).to_bytes()], &program.id());
-    let (decenwser, _bump): (Pubkey, u8) =
-        Pubkey::find_program_address(&[b"Decenwser"], &program.id());
+    // Find the program address for the Decenwser program
+    let (decenwser, _bump): (Pubkey, u8) = Pubkey::find_program_address(&[b"Decenwser"], &program.id());
     let account: DecenwserAccount = program.account(decenwser)?;
-    let (html_store, _bump): (Pubkey, u8) =
-        Pubkey::find_program_address(&[&account.total_updates.to_le_bytes()], &program.id());
+    let (html_store, _bump): (Pubkey, u8) = Pubkey::find_program_address(&[&account.total_updates.to_le_bytes()], &program.id());
+    // Send a transaction to the Decenwser program, creating an HTML account and storing the provided HTML data in it
     let tx: Signature = program
         .request()
         .accounts(decenwser::accounts::HtmlStore {
@@ -36,6 +37,7 @@ pub fn html_store(
         })
         .send()?;
     let html_account: HTML = program.account(html_store)?;
+    // Print out some information about the transaction and account data
     println!("------------------------------------------------------------");
     println!("Tx: {}", tx);
     println!("------------------------------------------------------------");
@@ -45,5 +47,5 @@ pub fn html_store(
     println!("------------------------------------------------------------");
     println!("Total updates: {}", account.total_updates);
     println!("------------------------------------------------------------");
-    Ok(())
+    Ok(()) // Return a success result
 }
