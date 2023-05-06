@@ -15,10 +15,9 @@ use decenwser::state::{
 
 pub fn js_store(
     program: &Program,
-    js: String, 
+    js: String,
     web_name: String
 ) -> Result<()> {
-    // Generate a program-derived address for the website's main account.
     let (main_account, _bump) = Pubkey::find_program_address(&[&hash(web_name.as_bytes()).to_bytes()], &program.id());
     // Generate a program-derived address for the Decenwser program account.
     let (decenwser, _bump): (Pubkey, u8) = Pubkey::find_program_address(&[b"Decenwser"], &program.id());

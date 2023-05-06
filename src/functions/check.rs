@@ -17,7 +17,6 @@ pub struct App {
 }
 
 pub fn check(domain: String) -> Result<()> {
-    // program_id is set to the program ID of the application we're interacting with
     let program_id: Pubkey = Pubkey::from_str(&program_id::ID).unwrap();
     // pda is set to the public key of the program derived address (PDA) for the domain
     let (pda, _bump) = Pubkey::find_program_address(&[&hash(domain.as_bytes()).to_bytes()], &program_id);
@@ -25,7 +24,6 @@ pub fn check(domain: String) -> Result<()> {
     let client: Client = Client::new(Cluster::Devnet, Rc::new(Keypair::new()));
     // The program is loaded from the client using the program ID
     let program: Program = client.program(program_id);
-    // The MainAccount data for the PDA is loaded from the program
     let app_data: MainAccount = program.account(pda)?;
     // The following variables are initialized to empty strings and zero values
     let mut html_content: String = "".to_string();
