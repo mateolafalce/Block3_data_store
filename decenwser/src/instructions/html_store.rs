@@ -27,7 +27,6 @@ pub fn html_store(
     Ok(())
 }
 
-
 // This code is using the `Accounts` procedural macro to define a struct named `HtmlStore`.
 // The struct has four public fields, all of which are accounts:
 #[derive(Accounts)]
