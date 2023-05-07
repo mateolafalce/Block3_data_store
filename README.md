@@ -125,7 +125,10 @@ Finally, the function returns Ok(()), indicating that the function execution com
 
 </details>
 
-<h3 align="center">Add css store</h3>
+<h3 align="center">Add css store 🎨</h3>
+
+<details>
+<summary>Add css store</summary>
 
 ```rust
 pub fn css_store(
@@ -187,6 +190,8 @@ The function performs the following tasks:
 - Increase the value of len in the main_account by 8.
 
 - Returns an Ok(()) value if all previous tasks were executed successfully.
+
+</details>
 
 <h3 align="center"> Add html store</h3>
 
@@ -298,6 +303,6 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <div align="center">
 
-![license](license.png)
+![license-image](license-image.png)
 
 </div>
