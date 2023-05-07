@@ -64,7 +64,10 @@ The decenwser function updates the fields of the decenwser account. In particula
 
 </details>
 
-<h3 align="center">Init Main Account</h3>
+<h3 align="center">Init Main Account 📡</h3>
+
+<details>
+<summary>Init main account</summary>
 
 ```rust
 pub fn main_account(
@@ -119,6 +122,8 @@ The MainAccountStruct structure is defined using a #[derive(Accounts)] macro att
 The function also assigns default values ​​to some of the main account fields main_account. The main account stores website information, and the html, css, and js fields are used to store the HTML, CSS, and JavaScript source code, respectively. The len field is used to keep track of the total length of the website information stored in the main account.
 
 Finally, the function returns Ok(()), indicating that the function execution completed successfully.
+
+</details>
 
 <h3 align="center">Add css store</h3>
 
