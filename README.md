@@ -12,7 +12,10 @@ This program written to run on the Solana blockchain has the purpose of saving t
 
 This program is the predecessor of the current program that runs behind Decenwser. However, the logic can be used by other projects focused on data distribution, not necessarily focused on web3. Specifically, in everything related to p2p data exchanges.
 
-<h3 align="center">Init Decenwser Account</h3>
+<h3 align="center">Init decenwser account 💻</h3>
+
+<details>
+<summary>Init decenwser account</summary>
 
 ```rust
 pub fn decenwser(
@@ -58,6 +61,8 @@ seeds – This is a list of bytes used to generate a unique public key for the a
 The signer account is defined as an account of type Signer, which is used to authenticate the transaction that modifies the decenwser account. Lastly, the Decenwser framework also includes a system program system_program, which is used to perform transactions on the Solana blockchain.
 
 The decenwser function updates the fields of the decenwser account. In particular, it sets pages_online and total_updates to 0, and assigns the value of bump to bump_original. Finally, the function returns Ok(()), indicating that the update of the decenwser account was completed without errors.
+
+</details>
 
 <h3 align="center">Init Main Account</h3>
 
