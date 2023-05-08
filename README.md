@@ -12,10 +12,8 @@ This program written to run on the Solana blockchain has the purpose of saving t
 
 This program is the predecessor of the current program that runs behind Decenwser. However, the logic can be used by other projects focused on data distribution, not necessarily focused on web3. Specifically, in everything related to p2p data exchanges.
 
-<h3 align="center">Init decenwser account 💻</h3>
-
 <details>
-<summary>Init decenwser account</summary>
+<summary>Init decenwser account 💻</summary>
 
 ```rust
 pub fn decenwser(
@@ -64,10 +62,8 @@ The decenwser function updates the fields of the decenwser account. In particula
 
 </details>
 
-<h3 align="center">Init Main Account 📡</h3>
-
 <details>
-<summary>Init main account</summary>
+<summary>Init main account 📡</summary>
 
 ```rust
 pub fn main_account(
@@ -125,10 +121,8 @@ Finally, the function returns Ok(()), indicating that the function execution com
 
 </details>
 
-<h3 align="center">Add css store 🎨</h3>
-
 <details>
-<summary>Add css store</summary>
+<summary>Add css store 🎨</summary>
 
 ```rust
 pub fn css_store(
