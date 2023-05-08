@@ -236,7 +236,8 @@ Finally, the function returns a successful result Ok(()).
 
 </details>
 
-<h3 align="center"> Add javascript store</h3>
+<details>
+<summary>Add javascript store 🛠️ </summary>
 
 ```rust
 pub fn js_store(
@@ -289,6 +290,8 @@ The function performs the following tasks:
 Verify that the account of the owner of the main account is the same as the account of the signer of the transaction. If they are not equal, the function returns an error. Checks that the length of the parent account string plus 8 is not greater than 9995. If so, the function returns an error. Gets a mutable reference to the "js_store" account and stores the JavaScript in it. Gets a mutable reference to account "main_account" and adds the total number of updates to the list of updates. Gets a mutable reference to the "decenwser" account and increases the total number of updates. Increase the length of the "main_account" account by 8.
 
 Finally, returns a success value if all operations completed successfully.
+
+</details>
 
 <h3 align="center">License📜</h3>
 
