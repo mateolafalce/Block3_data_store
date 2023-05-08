@@ -187,7 +187,8 @@ The function performs the following tasks:
 
 </details>
 
-<h3 align="center"> Add html store</h3>
+<details>
+<summary>Add html store 📄 </summary>
 
 ```rust
 pub fn html_store(
@@ -232,6 +233,8 @@ Then, it checks that the length of the HTML fragment is less than 9987 bytes (99
 The function then updates the html_store account with the new HTML snippet and updates the total_updates counter in the decenwser account. It also updates the account main_account to add an entry to the update log and update the length of the content.
 
 Finally, the function returns a successful result Ok(()).
+
+</details>
 
 <h3 align="center"> Add javascript store</h3>
 
