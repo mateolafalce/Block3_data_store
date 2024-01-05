@@ -2,7 +2,7 @@
 
 ![data-store](data-store.png)
 
-<h1>Data Store for Decenwser</h1>
+# Data Store for Decenwser
 
 </div>
 
@@ -14,8 +14,8 @@ This program is the predecessor of the current program that runs behind Decenwse
 
 ---
 
-<details>
-<summary>💻 Init decenwser account</summary>
+
+# Init decenwser account
 
 ```rust
 pub fn decenwser(
@@ -62,7 +62,6 @@ The signer account is defined as an account of type Signer, which is used to aut
 
 The decenwser function updates the fields of the decenwser account. In particular, it sets pages_online and total_updates to 0, and assigns the value of bump to bump_original. Finally, the function returns Ok(()), indicating that the update of the decenwser account was completed without errors.
 
-</details>
 
 <details>
 <summary>📡 Init main account</summary>

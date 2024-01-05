@@ -1,0 +1,21 @@
+[package]
+name = "data_store"
+version = "1.0.0"
+description = "Decentralized data store"
+edition = "2021"
+authors = ["Mateo Lafalce <mateolafalce@protonmail.com>"]
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "data_store"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.29.0"
+ahash = "=0.8.6"
