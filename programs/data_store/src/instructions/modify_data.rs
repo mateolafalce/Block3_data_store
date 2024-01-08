@@ -16,8 +16,15 @@ pub fn modify_data_(ctx: Context<ModifyData>, new_content: String) -> Result<()>
 }
 
 #[derive(Accounts)]
+#[instruction(content: String)]
 pub struct ModifyData<'info> {
-    #[account(mut, seeds = [&signer.key().to_bytes()], bump = data_store.bump_original)]
+    #[account(
+        mut, 
+        seeds = [&signer.key().to_bytes()], bump = data_store.bump_original,         
+        realloc = DataStore::SIZE + content.len(),
+        realloc::payer = signer,
+        realloc::zero = false,
+        )]
     pub data_store: Account<'info, DataStore>,
     #[account(mut)]
     pub signer: Signer<'info>,

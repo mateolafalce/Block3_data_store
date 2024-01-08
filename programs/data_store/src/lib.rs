@@ -7,7 +7,7 @@ pub mod utils;
 
 use instructions::{create_data_store::create_data_store_, modify_data::modify_data_};
 
-declare_id!("4CXvM9ENhCMGsfz7YPjqDjAkqwLqMwTvw3SBq3YChBNN");
+declare_id!("3CoF2STeHokdFvTjhjq5ymoVCDrhAhdawpR2Co3ipNWK");
 
 #[program]
 pub mod data_store {

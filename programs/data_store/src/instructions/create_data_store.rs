@@ -19,7 +19,7 @@ pub struct CreateDataStore<'info> {
     #[account(init, seeds = [&signer.key().to_bytes()],
         bump,
         payer = signer,
-        space = DataStore::SIZE
+        space = DataStore::SIZE + content.len()
     )]
     pub data_store: Account<'info, DataStore>,
     #[account(mut)]

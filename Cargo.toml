@@ -7,6 +7,7 @@ members = [
 overflow-checks = true
 lto = "fat"
 codegen-units = 1
+
 [profile.release.build-override]
 opt-level = 3
 incremental = false
@@ -16,7 +17,7 @@ codegen-units = 1
 # name = "data_store"
 # version = "0.2.0"
 # edition = "2021"
-# authors = ["Mateo Lafalce <mateo.lafalce04@gmail.com>"]
+# authors = ["Mateo Lafalce <mateolafalce@protonmail.com>"]
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
